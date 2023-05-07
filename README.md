@@ -39,6 +39,8 @@ $ go build ./cmd/app
 $ ./app
 ```
 
+2. Try hit one of the HTTP API in browser, open: http://127.0.0.1:8080/hello
+
 ## Directory Structure
 
 This repository is organized with the following structure
