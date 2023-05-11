@@ -13,7 +13,7 @@ import (
 
 func main() {
 	// TODO: change connection string if needed
-	storeClient, err := tweetpgstore.New("dbname=postgres user=postgres password= host=127.0.0.1 port=5432 sslmode=disable")
+	storeClient, err := tweetpgstore.New("postgres://postgres:root@localhost:5432/tweetapp?sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}

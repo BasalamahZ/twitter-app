@@ -19,11 +19,21 @@ func New(tweetSvc tweet.Service) *Handler {
 	}
 
 	// example how to add HTTP handler to h.handlers
-	h.handlers["/hello"] = &helloHandler{
-		tweetSvc: tweetSvc,
-	}
+	// h.handlers["/hello"] = &helloHandler{
+	// 	tweetSvc: tweetSvc,
+	// }
 
 	// TODO: add desired HTTP handler to h.handlers
+	h.handlers["/tweets"] = &getAllHandler{
+		tweetSvc: tweetSvc,
+	}
+	
+	h.handlers["/tweet"] = &createHandler{
+		tweetSvc: tweetSvc,
+	}
+	h.handlers["/tweet/"] = &getDetailHandler{
+		tweetSvc: tweetSvc,
+	}
 
 	return h
 }
