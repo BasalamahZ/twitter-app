@@ -19,9 +19,9 @@ This service has dependency with PostgreSQL. For development environment, you ne
 1. Once you have all the prerequisites, you can start by cloning this repository into your machine.
 
 ```sh
-$ mkdir -p $GOPATH/src/github.com/alwisisva/
-$ cd $GOPATH/src/github.com/alwisisva
-$ git clone https://github.com/alwisisva/twitter-app.git
+$ mkdir -p $GOPATH/src/github.com/BasalamahZ/
+$ cd $GOPATH/src/github.com/BasalamahZ
+$ git clone https://github.com/BasalamahZ/twitter-app.git
 $ cd twitter-app
 ```
 
@@ -39,7 +39,15 @@ $ go build ./cmd/app
 $ ./app
 ```
 
-2. Try hit one of the HTTP API in browser, open: http://127.0.0.1:8080/hello
+2. Try hit one of the HTTP API in browser, open: http://127.0.0.1:8080/
+
+### API Endpoints
+
+| HTTP Verbs | Endpoints  | Action                         |
+| ---------- | ---------- | ------------------------------ |
+| POST       | /tweet     | To create a new tweet          |
+| GET        | /tweets    | To retrieve all tweets         |
+| GET        | /tweet/:id | To retrieve details of a tweet |
 
 ## Directory Structure
 
@@ -47,6 +55,7 @@ This repository is organized with the following structure
 
 ```
 twitter-app
-|-- cmd      # Contains executables codes
-|-- internal # Application service packages      
+|-- cmd       # Contains executables codes
+|-- internal  # Application service packages
+|-- migration # Contains migration script
 ```
