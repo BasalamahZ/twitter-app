@@ -1,14 +1,23 @@
 package service
 
-type Tweet struct {
-	ID          int    `db:"id"`
-	Title       string `db:"title"`
-	Description string `db:"description"`
+import (
+	"context"
+
+	"github.com/BasalamahZ/twitter-app/internal/tweet"
+)
+
+// PGStore is the PostgreSQL store for configuration service.
+type PGStore interface {
+	NewClient(useTx bool) (PGStoreClient, error)
 }
-type StoreClient interface {
-	// TODO: define methods to be used by HTTP handlers to
-	// interact with tweet storage (PostgreSQL).
-	CreateTweet(tweet *Tweet) (Tweet, error)
-	GetAllTweet() ([]Tweet, error)
-	GetDetailTweet(id int) (Tweet, error)
+
+type PGStoreClient interface {
+	// Commit commits the transaction.
+	Commit() error
+	// Rollback aborts the transaction.
+	Rollback() error
+	
+	CreateTweet(ctx context.Context, tweet tweet.Tweet) (int64, error)
+	GetAllTweets(ctx context.Context) ([]tweet.Tweet, error)
+	GetTweetByID(ctx context.Context, id int64) (tweet.Tweet, error)
 }

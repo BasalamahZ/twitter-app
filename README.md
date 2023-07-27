@@ -57,5 +57,4 @@ This repository is organized with the following structure
 twitter-app
 |-- cmd       # Contains executables codes
 |-- internal  # Application service packages
-|-- migration # Contains migration script
 ```

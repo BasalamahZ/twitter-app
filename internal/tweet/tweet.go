@@ -1,11 +1,22 @@
 package tweet
 
-import "github.com/alwisisva/twitter-app/internal/tweet/service"
+import (
+	"context"
+	"time"
+)
 
 type Service interface {
-	// TODO: define methods to be used by HTTP handlers to
-	// interact with tweet functionalities.
-	CreateTweet(tweet *service.Tweet) (service.Tweet, error)
-	GetAllTweet() ([]service.Tweet, error)
-	GetDetailTweet(id int) (service.Tweet, error)
+	CreateTweet(ctx context.Context, tweet Tweet) (int64, error)
+	GetAllTweets(ctx context.Context) ([]Tweet, error)
+	GetTweetByID(ctx context.Context, id int64) (Tweet, error)
+}
+
+type Tweet struct {
+	ID          int64
+	Title       string
+	Description string
+	CreateBy    string
+	CreateTime  time.Time
+	UpdateBy    string
+	UpdateTime  time.Time
 }
